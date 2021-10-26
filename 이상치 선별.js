@@ -154,6 +154,7 @@ function auto_input() {
     if (cur_idx + 1 >= test_case.length) {
         cur_idx = -1;
     }
+    auto_input_select.value = cur_idx + 1;
     macro_input(cur_idx + 1);
 }
 
