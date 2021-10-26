@@ -22,8 +22,18 @@ let test_case = [
     `29,28,28,28,28,28,27,28,28,28,28,28,29,28,28,29,28,29,28,29`,
     `28,28,30,27,28,28,28,28,28,27,28,28,30,59,70,28,28,28,28,28`,
     `2,4,8`,
-    `1000,2000`,
+    `1000,2000,4000`,
+    `120,121,114,116,117,115,116,115,117,120`,
+    `202,185,194,192,193,194,194,187,186,194`,
+    `117,118,116,112,117,119,117,118,119,118`,
+    `107,110,104,104,106,111,108,109,109,108`,
+    `85,125,127,127,112,122,122,129,135,106`,
+    `155,174,212,204,217,171,205,209,181,205`,
+    `121,123,123,121,118,118,113,119,124,117`,
+    `105,110,75,105,110,109,77,112,99,111`,
 ];
+
+let cur_idx = -1;
 
 function area_update(e) {
     // console.log(e);
@@ -131,15 +141,22 @@ function area_update(e) {
 }
 
 function macro_input(index) {
-    // console.log(e);
-    input_textarea.value = test_case[index];
+    cur_idx = parseInt(index);
+    input_textarea.value = test_case[parseInt(index)];
     area_update();
 }
 
 function select_changed(e) {
-    console.log(e.target.value);
     macro_input(e.target.value);
 }
+
+function auto_input() {
+    if (cur_idx + 1 >= test_case.length) {
+        cur_idx = -1;
+    }
+    macro_input(cur_idx + 1);
+}
+
 for (let i = 0; i < test_case.length; i++) {
     let tempo = test_case[i].split(",");
     let option_el = document.createElement("option");
