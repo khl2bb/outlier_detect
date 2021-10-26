@@ -96,16 +96,29 @@ function area_update(e) {
             outlier_index_list.push(k);
         }
     }
+    let final_list = [];
+    final_list = work_list;
     output_textarea.value += "\n\n선정된 OUTLIER";
     if (outlier_index_list.length <= 0) {
         output_textarea.value += `가 없습니다.`;
     } else {
         for (i = 0; i < outlier_index_list.length; i++) {
             output_textarea.value += `\n${work_list[outlier_index_list[i]]}`;
+            final_list.splice(outlier_index_list[i], 1);
         }
     }
     // console.log(`diff_list `, diff_list[tgt_idx]);
     // console.log(`outlier_index_list `, outlier_index_list);
+    
+    let total = 0;
+    let mean = 0;
+
+    output_textarea.value += "\n\nOUTLIER 제외 평균 : ";
+    for (i = 0; i < final_list.length; i++) {
+        total += final_list[i];
+    }
+    mean = total / final_list.length;
+    output_textarea.value += `${mean}`;
 }
 
 function macro_input(index) {
