@@ -85,7 +85,7 @@ function area_update(e) {
 
     criteria = (work_list[tgt_idx] / 100) * 20;
 
-    output_textarea.value += "\n이상치 기준 차이 값 : ";
+    output_textarea.value += "\n이상치 기준 차이 값 : ±";
     output_textarea.value += criteria;
 
     diff_list[tgt_idx].splice(tgt_idx, 0, 0);
@@ -104,7 +104,7 @@ function area_update(e) {
     } else {
         for (i = 0; i < outlier_index_list.length; i++) {
             output_textarea.value += `\n${work_list[outlier_index_list[i]]}`;
-            final_list.splice(outlier_index_list[i], 1);
+            final_list.splice(outlier_index_list[i] - i, 1);
         }
     }
     // console.log(`diff_list `, diff_list[tgt_idx]);
@@ -118,6 +118,15 @@ function area_update(e) {
         total += final_list[i];
     }
     mean = total / final_list.length;
+    output_textarea.value += `${mean}`;
+    
+    total = 0;
+    mean = 0;
+    output_textarea.value += "\n기존 평균 : ";
+    for (i = 0; i < work_list.length; i++) {
+        total += work_list[i];
+    }
+    mean = total / work_list.length;
     output_textarea.value += `${mean}`;
 }
 
