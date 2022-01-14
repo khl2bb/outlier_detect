@@ -7,4 +7,4 @@ outlier_detect practice
 
 ## URL
 
-khl2bb.github.io/outlier_detect
+https://khl2bb.github.io/outlier_detect/
