@@ -106,8 +106,13 @@ function area_update(e) {
             outlier_index_list.push(k);
         }
     }
+
     let final_list = [];
-    final_list = work_list;
+    
+    for (i = 0; i < work_list.length; i++) {
+        final_list.push(work_list[i])
+    }
+
     output_textarea.value += "\n\n선정된 OUTLIER";
     if (outlier_index_list.length <= 0) {
         output_textarea.value += `가 없습니다.`;
@@ -132,6 +137,7 @@ function area_update(e) {
     
     total = 0;
     mean = 0;
+
     output_textarea.value += "\n기존 평균 : ";
     for (i = 0; i < work_list.length; i++) {
         total += work_list[i];
